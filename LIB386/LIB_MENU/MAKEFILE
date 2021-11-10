@@ -4,16 +4,16 @@
 CC = c:\compil\watcom\bin\wcc386p
 WL = c:\compil\watcom\binb\wlib
 !else
-CC = c:\compil\watcom10\binb\wcc386
-WL = c:\compil\watcom10\binb\wlib
+CC = wcc386
+WL = wlib
 !endif
 !else
 !ifeq WATCOM9 yes
 CC = f:\compil\watcom\bin\wcc386p
 WL = f:\compil\watcom\binb\wlib
 !else
-CC = f:\compil\watcom10\binb\wcc386
-WL = f:\compil\watcom10\binb\wlib
+CC = wcc386
+WL = wlib
 !endif
 !endif
 
@@ -56,6 +56,7 @@ $(LIB).LIB: $(OBJETS1) $(OBJETS2) $(OBJETS3) $(OBJETS4)
 
 .c.obj:
 	@PRNTITRE M "$*.C"
+	echo @$(CC) $(CFLAGS) $* >> commands.txt
 	@$(CC) $(CFLAGS) $*
 
 

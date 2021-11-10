@@ -129,9 +129,9 @@ void	ComputeCoorGlobe()
 /*──────────────────────────────────────────────────────────────────────────*/
 // compute projection sphere
 
-int z_sort( WORD *a, WORD *b)
+int z_sort( const void *a, const void *b)
 {
-	return( *a - *b ) ;
+	return( *(WORD*)a - *(WORD*)b ) ;
 }
 
 void	ComputeGlobeProj()

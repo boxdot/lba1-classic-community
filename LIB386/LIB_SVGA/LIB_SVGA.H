@@ -3,9 +3,9 @@
 ;-----------------------------------------------------------------------------*/
 
 #ifdef	WATCOM9
-#pragma library ( "f:\projet\lib386\lib_svga\lb9_svga.lib" );
+#pragma library ( "f:\lba\lib386\lib_svga\lb9_svga.lib" );
 #else
-#pragma library ( "f:\projet\lib386\lib_svga\lib_svga.lib" );
+#pragma library ( "f:\lba\lib386\lib_svga\lib_svga.lib" );
 #endif
 
 /*-----------------------------------------------------------------------------*/
@@ -97,6 +97,10 @@ void    GetDxDyGraph( LONG num, LONG *dx, LONG *dy, void *bank )        ;
 void    AffMask( LONG num, LONG x, LONG y, void *bank ) ;
 /*-----------------------------------------------------------------------------*/
 /*                      InitSvga.asm                                            */
+void    InitSvga( void )                                ;
+void    InitMcga( void )                                ;
+void    ClearVideo( void )                              ;
+
 void    SetClip( LONG x0, LONG y0, LONG x1, LONG y1 )   ;
 void    UnSetClip( void )                               ;
 void    MemoClip( void )                                ;

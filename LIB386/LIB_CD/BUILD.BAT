@@ -1,5 +1,5 @@
-call watcom10
-pkunzip -o obj >NUL
+rem call watcom10
+rem pkunzip -o obj >NUL
 wmake /f lib_CD.mak
-pkzip -m obj *.obj >NUL
-call watcom9
+rem pkzip -m obj *.obj >NUL
+rem call watcom9

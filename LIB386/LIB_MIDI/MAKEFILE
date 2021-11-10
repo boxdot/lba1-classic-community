@@ -12,8 +12,8 @@ WL = c:\compil\watcom10\binb\wlib
 CC = f:\compil\watcom95\bin\wcc386
 WL = f:\compil\watcom95\binb\wlib
 !else
-CC = f:\compil\watcom10\binb\wcc386
-WL = f:\compil\watcom10\binb\wlib
+CC = wcc386
+WL = wlib
 !endif
 !endif
 
@@ -29,7 +29,7 @@ LFLAGS = -b -n -c -q
 AFLAGS = /Cx /Zm /c /W0 /Sa /DNoLanguage=SYSCALL /Djumps=;
 
 
-OBJETS1  = midi.obj ail32.obj
+OBJETS1  = midi.obj # ail32.obj
 OBJETS2  =
 OBJETS3  =
 OBJETS4  =
@@ -50,8 +50,10 @@ $(LIB).LIB: $(OBJETS1) $(OBJETS2) $(OBJETS3) $(OBJETS4)
 
 .asm.obj:
 	@PRNTITRE M "$*.ASM"
+	echo @$(ASM) $(AFLAGS) $*.ASM >> commands.txt
 	@$(ASM) $(AFLAGS) $*.ASM
 
 .c.obj:
 	@PRNTITRE M "$*.C"
+	echo @$(CC) $(CFLAGS) $* >> commands.txt
 	@$(CC) $(CFLAGS) $*

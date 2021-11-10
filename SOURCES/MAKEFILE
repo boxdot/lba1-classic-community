@@ -15,9 +15,9 @@ CC = f:\compil\watcom\bin\wcc386p
 CL = f:\compil\watcom\binb\Wcl386
 WL = f:\compil\watcom\binb\wlib
 !else
-CC = f:\compil\watcom10\binb\wcc386
-CL = f:\compil\watcom10\binb\Wcl386
-WL = f:\compil\watcom10\binb\wlib
+CC = wcc386
+CL = Wcl386
+WL = wlib
 !endif
 !endif
 
@@ -47,20 +47,34 @@ OBJETS6  = HoloMap.obj playfla.obj adfli_a.obj mcga.obj
 EXE      = LBA0
 
 $(EXE).exe: $(OBJETS1) $(OBJETS2) $(OBJETS3) $(OBJETS4) $(OBJETS5) $(OBJETS6)
-	if exist tempo.obs del tempo.obs
-	if exist tempo.obj del tempo.obj
-	copy    /B *.obj tempo.obs
-	ren     tempo.obs tempo.obj
-	$(CL) $(LFLAGS) /fe=$(EXE).exe tempo.obj
-	del     tempo.obj
-	prntitre M "$(EXE) OK"
-#       wstrip $(EXE)
-	copy $(EXE).exe \projet\lba\game
+	echo $(OBJETS1) > clibmak.rsp
+	echo $(OBJETS2) >> clibmak.rsp
+	echo $(OBJETS3) >> clibmak.rsp
+	echo $(OBJETS4) >> clibmak.rsp
+	echo $(OBJETS5) >> clibmak.rsp
+	echo $(OBJETS6) >> clibmak.rsp
+
+	$(CL) $(LFLAGS) /fe=$(EXE).exe @clibmak.rsp
+
+
+# 	if exist tempo.obs del tempo.obs
+# 	if exist tempo.obj del tempo.obj
+
+
+# 	copy    $(OBJETS1) $(OBJETS2) $(OBJETS3) $(OBJETS4) $(OBJETS5) $(OBJETS6) tempo.obs
+# 	ren     tempo.obs tempo.obj
+# 	$(CL) $(LFLAGS) /fe=$(EXE).exe tempo.obj
+# 	del     tempo.obj
+# 	prntitre M "$(EXE) OK"
+# #       wstrip $(EXE)
+# 	copy $(EXE).exe \projet\lba\game
 
 .c.obj :
 	PRNTITRE M "$*.C"
+	echo $(CC) $^& $(CFLAGS) >> commands.txt
 	$(CC) $^& $(CFLAGS)
 
 .asm.obj :
 	PRNTITRE M "$*.ASM"
+	echo $(ASM) $(AFLAGS) $^&.ASM >> commands.txt
 	$(ASM) $(AFLAGS) $^&.ASM

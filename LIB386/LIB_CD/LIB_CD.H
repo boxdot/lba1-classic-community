@@ -2,7 +2,7 @@
 //----------------------------------------------------------------------------
 
 
-#pragma library ("f:\projet\lib386\lib_cd\lib_cd.lib");
+#pragma library ("f:\lba\lib386\lib_cd\lib_cd.lib");
 
 
 extern  WORD    BufferData[]    ;

@@ -3,8 +3,8 @@
 CC = c:\compil\watcom10\binb\wcc386
 WL = c:\compil\watcom10\binb\wlib
 !else
-CC = f:\compil\watcom10\binb\wcc386
-WL = f:\compil\watcom10\binb\wlib
+CC = wcc386
+WL = wlib
 !endif
 
 ASMFLAGS  = /m2 /mx /z /p /q /t /jMASM51 /jQUIRKS
